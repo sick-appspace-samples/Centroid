@@ -8,8 +8,8 @@
 
   How to Run:
   Starting this sample is possible either by running the app (F5) or
-  debugging (F7+F10). Setting breakpoint on the first row inside the 'main'
-  function allows debugging step-by-step after 'Engine.OnStarted' event.
+  debugging (F7+F10). Setting a breakpoint on the first row inside the 'main'
+  function allows debugging step-by-step after the 'Engine.OnStarted' event.
   Results can be seen in the image viewer on the DevicePage.
   Restarting the Sample may be necessary to show images after loading the webpage.
   To run this Sample a device with SICK Algorithm API and AppEngine >= V2.5.0 is
@@ -20,7 +20,6 @@
   Tutorial "Algorithms - Blob Analysis".
 
 ------------------------------------------------------------------------------]]
-
 --Start of Global Scope---------------------------------------------------------
 
 print('AppEngine Version: ' .. Engine.getVersion())
@@ -29,7 +28,6 @@ local DELAY = 500 -- ms between visualization steps for demonstration purpose
 
 -- Creating viewer
 local viewer = View.create()
-viewer:setID('viewer2D')
 
 -- Setting up graphical overlay attributes
 local deco = View.ShapeDecoration.create()
