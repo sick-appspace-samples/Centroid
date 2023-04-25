@@ -6,7 +6,7 @@ print('AppEngine Version: ' .. Engine.getVersion())
 local DELAY = 500 -- ms between visualization steps for demonstration purpose
 
 -- Creating viewer
-local viewer = View.create('viewer2D1')
+local viewer = View.create()
 
 -- Setting up graphical overlay attributes
 local deco = View.ShapeDecoration.create()
@@ -21,7 +21,7 @@ deco:setLineColor(0, 255, 0) -- Green
 local function main()
   viewer:clear()
   local img = Image.load('resources/Centroid.bmp')
-  local imageID = viewer:addImage(img)
+  viewer:addImage(img)
   viewer:present()
   Script.sleep(DELAY) -- for demonstration purpose only
 
@@ -30,12 +30,10 @@ local function main()
   local blobs = objectRegion:findConnected(500)
 
   -- Analyzing each blob and visualizing the result
-  for i = 1, #blobs do
-    local center = blobs[i]:getCenterOfGravity(img)
-    viewer:addShape(center, deco, nil, imageID)
-    viewer:present() -- presenting single steps
-    Script.sleep(DELAY) -- for demonstration purpose only
-  end
+  local centers = blobs:getCenterOfGravity(img)
+  viewer:addShape(centers, deco)
+  viewer:present()
+
   print(#blobs .. ' blobs found')
   print('App finished.')
 end
